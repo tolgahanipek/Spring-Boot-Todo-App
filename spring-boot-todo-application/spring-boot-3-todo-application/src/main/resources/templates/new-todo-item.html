@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}"/>
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-size: cover;
+            background: url(https://picsum.photos/3000/2000/?image=1015) no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-2">
+            <p><a class="btn btn-info" href="/t">
+                <i class="bi bi-plus-square-fill"></i> Geri Dön</a>
+            </p>
+        </div>
+        <div class="col-6">
+            <h2>Yeni Bir Yapılacak Öğe Ekle</h2>
+            <form action="#" th:action="@{/todo}" th:object="${toDoItem}" method="POST">
+                <div class="form-group">
+                    <lamel for="description">Açıklama</lamel>
+                    <input class="form-control"
+                       type="text"
+                        th:field="*{description}"
+                           id="description"
+                           placeholder="Description"
+                    >
+
+                    <button type="submit" class="btn btn-info">
+                        <i class="bi bi-plus-square-fill"></i> Yapılacak Ekle
+                    </button>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

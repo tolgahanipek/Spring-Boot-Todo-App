@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link  th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}" />
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-size: cover;
+            background: url(https://picsum.photos/3000/2000/?image=1015) no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Spring Boot Yapılacaklar Uygulaması</h1>
+    <hr />
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Eylemler</th>
+            <th>Id</th>
+            <th>Açıklama</th>
+            <th>Tamamlanma</th>
+            <th>Oluşturma Tarihi</th>
+            <th>Güncelleme Tarihi</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${todoItems}" th:class="${item.isComplete} ? 'alert alert-success' : 'alert alert-warning'">
+            <td>
+                <div class="btn btn-group-sm" role="group">
+                    <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">
+                        <i class="bi bi-pencil-fill"></i> Düzenle</a>
+                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">
+                        <i class="bi bi-trash-fill"></i> Sil</a>
+                </div>
+            </td>
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.description}"></td>
+            <td>
+                <span th:if="${item.isComplete} == true" th:text="Evet" />
+                <span th:unless="${item.isComplete} == true" th:text="Hayır" />
+            </td>
+            <td th:text="${item.createdAt}"></td>
+            <td th:text="${item.updatedAt}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p><a class="btn btn-info" href="/create-todo">
+        <i class="bi bi-plus-square-fill"></i> Bir Yapılacak Oluştur </a>
+        <a class="btn btn-info" href="/">
+            <i class="bi bi-plus-square-fill"></i>Oturumu Kapat</a>
+    </p>
+
+
+</div>
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

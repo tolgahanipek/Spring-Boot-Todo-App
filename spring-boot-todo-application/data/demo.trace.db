@@ -1,0 +1,5 @@
+2023-07-26 16:04:13 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "delete [*]* from TODO_ITEMS"; expected "identifier"; SQL statement:
+delete * from TODO_ITEMS [42001-214]
+2023-07-27 04:04:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
